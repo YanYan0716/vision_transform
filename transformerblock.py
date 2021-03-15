@@ -31,8 +31,8 @@ class SelfAttention(layers.Layer):
             keys = inputs
             query = inputs
 
-            N = query.shape[0]
-            value_len, key_len, query_len = values.shape[1], keys.shape[1], query.shape[1]
+            N = tf.shape(query)[0]
+            value_len, key_len, query_len = tf.shape(values)[1], tf.shape(keys)[1], tf.shape(query)[1]
             values = tf.reshape(values, shape=[N, value_len, self.heads, self.head_dim])
             keys = tf.reshape(keys, shape=[N, key_len, self.heads, self.head_dim])
             queries = tf.reshape(query, shape=[N, query_len, self.heads, self.head_dim])

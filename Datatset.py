@@ -23,7 +23,7 @@ def label_image(img_file, label):
 
     # 对标签的处理
     label = tf.cast(label, dtype=config.DTYPE)
-    return {'images': img, 'labels': label}
+    return (img, label)
 
 
 if __name__ == '__main__':

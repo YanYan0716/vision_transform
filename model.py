@@ -40,7 +40,7 @@ class Encoder(layers.Layer):
 
     def call(self, inputs):
         #addPosemb
-        pos_emb_shape = (1, inputs.shape[1], inputs.shape[2])
+        pos_emb_shape = (1, tf.shape(inputs)[1], tf.shape(inputs)[2])
         pe = tf.initializers.random_normal(stddev=0.02)(shape=pos_emb_shape)
         inputs = tf.math.add(inputs, pe)
 
@@ -104,8 +104,8 @@ class VisionTransformer(keras.Model):
 
     def call(self, inputs, training=None, mask=None):
         x = self.embedding(inputs)
-        n, h, w, c = x.shape
-        x = tf.reshape(x, shape=[n, h*w, c])
+        n, h, w, c = tf.shape(x)
+        x = tf.reshape(x, [n, -1, c])
         cls = tf.zeros((1, 1, c))
         cls = tf.tile(cls, [n, 1, 1])
         x = tf.concat([cls, x], axis=1)
@@ -113,6 +113,10 @@ class VisionTransformer(keras.Model):
         x = x[:, 0]
         out = self.classifier(x)
         return out
+
+    def model(self):
+        input = keras.Input(shape=(384, 384, 3), dtype=tf.float32)
+        return keras.Model(inputs=input, outputs=self.call(input))
 
 
 def test():
@@ -127,7 +131,7 @@ def test():
         patches=config.SIZE,
         hidden_size=config.HIDDEN_SIZE,
         representation_size=None,
-        classifier='token',)
+        classifier='token').model()
     out = model(img)
     print(out.shape)
 
