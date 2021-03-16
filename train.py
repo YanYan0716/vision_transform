@@ -56,7 +56,7 @@ if __name__ == '__main__':
         for batch_idx, (img, label) in enumerate(ds_train):
             step += 1
             lr = lr_schedule.__call__(step)
-            optimizer = keras.optimizers.Adam(learning_rate=lr, beta_1=0.9, clipnorm=config.GRAD_NORM_CLIP)
+            optimizer = keras.optimizers.Adam(learning_rate=lr, beta_1=0.9)
             with tf.GradientTape() as tape:
                 output = vision_transformer(img, training=True)
                 loss = loss_fn(label, output)
