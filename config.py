@@ -2,20 +2,20 @@ import tensorflow as tf
 DTYPE = tf.float32
 
 # dataset
-RESIZE = 512
-CROP = 384
-# TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
-TRAIN_PATH = '/content/cifar/train.csv'  # google
+RESIZE = 64  # 512
+CROP = 64  # 384
+TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
+# TRAIN_PATH = '/content/cifar/train.csv'  # google
 TEST_PATH = '.'
-BATCH_SIZE = 512
+BATCH_SIZE = 64  # 512
 SHUFFLE_BUFFER = 50000
 
 # model
-SIZE = (16, 16)
+SIZE = (4, 4)  # (16, 16)
 HIDDEN_SIZE = 768
-MLP_DIM = 3072
+MLP_DIM = 1024  # 3072
 NUM_HEADS = 12
-NUM_LAYERS = 12
+NUM_LAYERS = 8  # 12
 ATTENTION_DROPOUT_RATE = 0.
 DROPOUT_RATE = 0.1
 CLASSIFIER = 'token'
@@ -25,15 +25,15 @@ NUM_CLASSES = 10
 
 # train
 WARMUP_STEPS = 500
-BASE_LR = 0.03
+BASE_LR = 0.003
 DECAY_TYPE = 'cosine'  # 'linear'
 GRAD_NORM_CLIP = 1.
 TOTAL_EPOCHS = 100
 TOTAL_STEPS = TOTAL_EPOCHS*int((50000/BATCH_SIZE)-1)
 
 # test
-# TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
-TEST_PATH = '/content/cifar/test.csv'  # google
+TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
+# TEST_PATH = '/content/cifar/test.csv'  # google
 LOAD_PATH = '../input/weights/weights/M'
 
 # evaluate

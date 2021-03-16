@@ -28,8 +28,8 @@ if __name__ == '__main__':
     # build model
     vision_transformer = VisionTransformer(
         num_classes=config.NUM_CLASSES,
-        num_layers=1,
-        train=False,
+        num_layers=config.NUM_LAYERS,
+        train=True,
         resnet=None,
         patches=config.SIZE,
         hidden_size=config.HIDDEN_SIZE,
@@ -67,8 +67,8 @@ if __name__ == '__main__':
             if batch_idx % config.LOG_LOSS == 0:
                 AvgLoss = AvgLoss / float(config.LOG_LOSS)
                 print(f'[epoch: %4d/ ' % i + 'EPOCHS: %4d]\t' % config.TOTAL_EPOCHS +
-                      '[step: %6d/ ' % i + 'STEPS: %6d]\t' % config.TOTAL_STEPS +
-                      '[loss:%.4f' % AvgLoss)
+                      '[step: %6d/ ' % step + 'STEPS: %6d]\t' % config.TOTAL_STEPS +
+                      '[loss:%.4f]' % AvgLoss + '/[learning rate: %6f]' % lr)
                 AvgLoss = 0
 
         if i % config.LOG_EPOCH == 5:
