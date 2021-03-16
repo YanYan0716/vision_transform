@@ -7,7 +7,7 @@ CROP = 64  # 384
 TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
 # TRAIN_PATH = '/content/cifar/train.csv'  # google
 TEST_PATH = '.'
-BATCH_SIZE = 3  # 512
+BATCH_SIZE = 64  # 512
 SHUFFLE_BUFFER = 50000
 
 # model
@@ -38,5 +38,5 @@ LOAD_PATH = '../input/weights/weights/M'
 
 # evaluate
 LOG_EPOCH = 1
-LOG_LOSS = 2
+LOG_LOSS = 200
 SAVE_PATH = './weights/M'
