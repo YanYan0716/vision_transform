@@ -4,7 +4,8 @@ DTYPE = tf.float32
 # dataset
 RESIZE = 512
 CROP = 384
-TRAIN_PATH = '../input/cifar10/cifar/train.csv'
+# TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
+TRAIN_PATH = '/content/cifar/train.csv'  # google
 TEST_PATH = '.'
 BATCH_SIZE = 512
 SHUFFLE_BUFFER = 50000
@@ -31,7 +32,8 @@ TOTAL_EPOCHS = 100
 TOTAL_STEPS = TOTAL_EPOCHS*int((50000/BATCH_SIZE)-1)
 
 # test
-TEST_PATH = '../input/cifar10/cifar/test.csv'
+# TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
+TEST_PATH = '/content/cifar/test.csv'  # google
 LOAD_PATH = '../input/weights/weights/M'
 
 # evaluate
