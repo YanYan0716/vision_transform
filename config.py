@@ -7,7 +7,7 @@ CROP = 64  # 384
 TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
 # TRAIN_PATH = '/content/cifar/train.csv'  # google
 TEST_PATH = '.'
-BATCH_SIZE = 64  # 512
+BATCH_SIZE = 32  # 512
 SHUFFLE_BUFFER = 50000
 
 # model
@@ -15,7 +15,7 @@ SIZE = (4, 4)  # (16, 16)
 HIDDEN_SIZE = 768
 MLP_DIM = 1024  # 3072
 NUM_HEADS = 12
-NUM_LAYERS = 8  # 12
+NUM_LAYERS = 12  # 12
 ATTENTION_DROPOUT_RATE = 0.
 DROPOUT_RATE = 0.1
 CLASSIFIER = 'token'
