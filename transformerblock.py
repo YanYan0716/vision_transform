@@ -109,15 +109,15 @@ class TransformerBlock(layers.Layer):
         self.norm_att = layers.LayerNormalization(axis=-1)
         # self attention
         self.SelfAttention = SelfAttention(embed_size=self.embed_size, heads=self.num_heads, mask=self.mask)
-        # self.feed_forward = keras.Sequential([
-        #     layers.LayerNormalization(axis=-1),
-        #     layers.Dropout(rate=self.attention_dropout_rate),
-        #     layers.Dense(self.embed_size*4),
-        #     layers.ReLU(),
-        #     layers.Dense(self.embed_size),
-        #     layers.LayerNormalization(axis=-1),
-        #     layers.Dropout(rate=self.attention_dropout_rate)
-        # ])
+        self.feed_forward = keras.Sequential([
+            layers.LayerNormalization(axis=-1),
+            layers.Dropout(rate=self.attention_dropout_rate),
+            layers.Dense(self.embed_size*4),
+            layers.ReLU(),
+            layers.Dense(self.embed_size),
+            layers.LayerNormalization(axis=-1),
+            layers.Dropout(rate=self.attention_dropout_rate)
+        ])
         self.dropout = layers.Dropout(rate=self.dropout_rate)
 
         # mlp
@@ -130,8 +130,9 @@ class TransformerBlock(layers.Layer):
 
     def call(self, inputs):
         # attention
-        x = self.norm_att(inputs)
-        attention = self.SelfAttention(x)
+        # x = self.norm_att(inputs)
+        x = inputs
+        attention = self.SelfAttention(inputs)
         attention = self.dropout(attention)
         out1 = tf.math.add(attention, x)
         # out1 = self.feed_forward(attention)
