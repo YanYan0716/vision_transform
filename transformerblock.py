@@ -3,7 +3,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
 import tensorflow.keras.layers as layers
 import tensorflow.keras as keras
-import tensorflow_addons as tfa
 
 
 import config
@@ -61,26 +60,24 @@ class MlpBlock(layers.Layer):
         self.out_dim = out_dim
         self.dropout_rate = dropout_rate
 
-        self.layer1 = layers.Dense(
+        self.layers = keras.Sequential([
+            layers.Dense(
                 self.mlp_dim,
-                kernel_initializer=tf.initializers.glorot_uniform,
+                kernel_initializer=tf.initializers.glorot_normal,
                 bias_initializer=tf.initializers.random_normal(stddev=1e-6)
-            )
-        self.gelu = tfa.activations.gelu
-        self.layer2 = keras.Sequential([
+            ),
+            layers.LeakyReLU(),
             layers.Dropout(rate=self.dropout_rate),
             layers.Dense(
                 self.out_dim,
-                kernel_initializer=tf.initializers.glorot_uniform,
+                kernel_initializer=tf.initializers.glorot_normal,
                 bias_initializer=tf.initializers.random_normal(stddev=1e-6)
             ),
             layers.Dropout(rate=self.dropout_rate),
         ])
 
     def call(self, inputs):
-        out = self.layer1(inputs)
-        out = self.gelu(out)
-        out = self.layer2(out)
+        out = self.layers(inputs)
         return out
 
 
@@ -106,7 +103,6 @@ class TransformerBlock(layers.Layer):
         self.out_dim = out_dim
         self.mask = mask
 
-        self.norm_att = layers.LayerNormalization(axis=-1)
         # self attention
         self.SelfAttention = SelfAttention(embed_size=self.embed_size, heads=self.num_heads, mask=self.mask)
         self.feed_forward = keras.Sequential([
@@ -118,10 +114,8 @@ class TransformerBlock(layers.Layer):
             layers.LayerNormalization(axis=-1),
             layers.Dropout(rate=self.attention_dropout_rate)
         ])
-        self.dropout = layers.Dropout(rate=self.dropout_rate)
-
         # mlp
-        self.norm_mlp = layers.LayerNormalization(axis=-1)
+        self.norm = layers.LayerNormalization(axis=-1)
         self.Mlpblock = MlpBlock(
             mlp_dim=self.mpl_dim,
             out_dim=self.out_dim,
@@ -130,14 +124,12 @@ class TransformerBlock(layers.Layer):
 
     def call(self, inputs):
         # attention
-        # x = self.norm_att(inputs)
-        x = inputs
+        query = inputs
         attention = self.SelfAttention(inputs)
-        attention = self.dropout(attention)
-        out1 = tf.math.add(attention, x)
-        # out1 = self.feed_forward(attention)
+        attention = tf.math.add(attention, query)
+        out1 = self.feed_forward(attention)
         # mlp
-        out2 = self.norm_mlp(out1)
+        out2 = self.norm(out1)
         out2 = self.Mlpblock(out2)
         out = tf.math.add(out1, out2)
         return out

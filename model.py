@@ -100,7 +100,7 @@ class VisionTransformer(keras.Model):
         if self.representation_size is not None:
             self.Dense = layers.Dense(representation_size)
             self.tanh = keras.activations.tanh
-        self.classifier = layers.Dense(self.num_classes, kernel_initializer=keras.initializers.zeros)
+        self.classifier = layers.Dense(self.num_classes)
 
     def call(self, inputs, training=None, mask=None):
         x = self.embedding(inputs)
@@ -120,7 +120,7 @@ class VisionTransformer(keras.Model):
 
 
 def test():
-    img = tf.random.normal((1, 64, 64, 3))
+    img = tf.random.normal((1, 384, 384, 3))
     # encoder = Encoder(num_layers=1, mlp_dim=config.MLP_DIM, inputs_positions=None, dropout_rate=0.1)
     # out = encoder(img)
     model = VisionTransformer(
