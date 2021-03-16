@@ -120,7 +120,7 @@ class VisionTransformer(keras.Model):
 
 
 def test():
-    img = tf.random.normal((1, 384, 384, 3))
+    img = tf.random.normal((1, 64, 64, 3))
     # encoder = Encoder(num_layers=1, mlp_dim=config.MLP_DIM, inputs_positions=None, dropout_rate=0.1)
     # out = encoder(img)
     model = VisionTransformer(
