@@ -24,7 +24,7 @@ FORWARD_EXPANSION = 4
 NUM_CLASSES = 10
 
 # train
-WARMUP_STEPS = 500
+WARMUP_STEPS = 10000
 BASE_LR = 0.003
 DECAY_TYPE = 'cosine'  # 'linear'
 GRAD_NORM_CLIP = 1.
@@ -38,5 +38,5 @@ LOAD_PATH = '../input/weights/weights/M'
 
 # evaluate
 LOG_EPOCH = 5
-LOG_LOSS = 20
+LOG_LOSS = 200
 SAVE_PATH = './weights/M'
