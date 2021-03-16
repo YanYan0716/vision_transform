@@ -1,13 +1,15 @@
 import os
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import pandas as pd
 import tensorflow as tf
-
+import tensorflow.keras as keras
 
 from Datatset import label_image
 import config
 from model import VisionTransformer
-
+from util import LearningRateSchedule
+from test import testModel
 
 if __name__ == '__main__':
     AUTOTUNE = tf.data.experimental.AUTOTUNE
@@ -20,7 +22,7 @@ if __name__ == '__main__':
     ds_train = ds_train \
         .map(label_image, num_parallel_calls=AUTOTUNE) \
         .batch(config.BATCH_SIZE) \
-        .shuffle(config.SHUFFLE_BUFFER)\
+        .shuffle(config.SHUFFLE_BUFFER) \
         .prefetch(AUTOTUNE)
 
     # build model
@@ -35,7 +37,44 @@ if __name__ == '__main__':
         classifier='token').model()
 
     # loss function
-    # optimizer
+    loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
+
+    # lr schedule
+    lr_schedule = LearningRateSchedule(
+        total_step=config.TOTAL_STEPS,
+        base=config.BASE_LR,
+        decay_type=config.DECAY_TYPE,
+        warmup_steps=config.WARMUP_STEPS
+    )
+
     # training ...
-    for i in range(config.TOTAL_STEPS):
-        for batch_idx,
+    print('training ... ')
+    step = 0
+    BAcc = 0
+    for i in range(config.TOTAL_EPOCHS):
+        AvgLoss = 0
+        for batch_idx, (img, label) in enumerate(ds_train):
+            step += 1
+            lr = lr_schedule.__call__(step)
+            optimizer = keras.optimizers.Adam(learning_rate=lr, beta_1=0.9, clipnorm=config.GRAD_NORM_CLIP)
+            with tf.GradientTape() as tape:
+                output = vision_transformer(img, training=True)
+                loss = loss_fn(label, output)
+                AvgLoss += loss
+            gradients = tape.gradient(loss, vision_transformer.trainable_weights)
+            optimizer.apply_gradients(zip(gradients, vision_transformer.trainable_weights))
+            # show loss
+            if batch_idx % config.LOG_LOSS == 0:
+                AvgLoss = AvgLoss / float(config.LOG_LOSS)
+                print(f'[epoch: %4d/ ' % i + 'EPOCHS: %4d]\t' % config.TOTAL_EPOCHS +
+                      '[step: %6d/ ' % i + 'STEPS: %6d]\t' % config.TOTAL_STEPS +
+                      '[loss:%.4f' % AvgLoss)
+                AvgLoss = 0
+
+        if i % config.LOG_EPOCH == 5:
+            acc = testModel(vision_transformer)
+            if acc > BAcc:
+                vision_transformer.save_weights(config.SAVE_PATH)
+                BAcc = acc
+            print(f'[epoch: %4d/ ' % i + 'EPOCHS:%4d]\t' % config.TOTAL_EPOCHS +
+                  + '[acc:%.4f' % acc + ', BAcc:%.4f]' % BAcc + ' path:%s' % config.SAVE_PATH)
