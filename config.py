@@ -37,6 +37,6 @@ TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
 LOAD_PATH = '../input/weights/weights/M'
 
 # evaluate
-LOG_EPOCH = 5
+LOG_EPOCH = 1
 LOG_LOSS = 200
 SAVE_PATH = './weights/M'

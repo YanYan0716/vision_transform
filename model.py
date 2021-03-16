@@ -115,7 +115,7 @@ class VisionTransformer(keras.Model):
         return out
 
     def model(self):
-        input = keras.Input(shape=(384, 384, 3), dtype=tf.float32)
+        input = keras.Input(shape=(64, 64, 3), dtype=tf.float32)
         return keras.Model(inputs=input, outputs=self.call(input))
 
 
