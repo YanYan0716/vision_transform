@@ -71,7 +71,7 @@ if __name__ == '__main__':
                       '[loss:%.4f' % AvgLoss)
                 AvgLoss = 0
 
-        if i % config.LOG_EPOCH == 5:
+        if i % config.LOG_EPOCH == 0:
             acc = testModel(vision_transformer)
             if acc > BAcc:
                 vision_transformer.save_weights(config.SAVE_PATH)
