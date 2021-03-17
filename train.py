@@ -76,8 +76,9 @@ if __name__ == '__main__':
             if acc > BAcc:
                 vision_transformer.save_weights(config.SAVE_PATH)
                 BAcc = acc
+                print(f'saved path: {config.SAVE_PATH}')
             print(f'[epoch: %4d/ ' % i + 'EPOCHS:%4d]\t' % config.TOTAL_EPOCHS +
-                  + '[acc:%.4f' % acc + ', BAcc:%.4f]' % BAcc + ' path:%s' % config.SAVE_PATH)
+                  + '[acc:%.4f' % acc + ', BAcc:%.4f]' % BAcc)
 
 # import os
 #
