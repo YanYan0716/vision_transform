@@ -3,6 +3,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
 import tensorflow.keras.layers as layers
 import tensorflow.keras as keras
+import tensorflow_addons as tfa
 
 
 import config
@@ -59,14 +60,13 @@ class MlpBlock(layers.Layer):
         self.mlp_dim = mlp_dim
         self.out_dim = out_dim
         self.dropout_rate = dropout_rate
-
+        self.dense1 = layers.Dense(
+            self.mlp_dim,
+            kernel_initializer=tf.initializers.glorot_normal,
+            bias_initializer=tf.initializers.random_normal(stddev=1e-6)
+        )
+        self.gelu = tfa.activations.gelu
         self.layers = keras.Sequential([
-            layers.Dense(
-                self.mlp_dim,
-                kernel_initializer=tf.initializers.glorot_normal,
-                bias_initializer=tf.initializers.random_normal(stddev=1e-6)
-            ),
-            layers.LeakyReLU(),
             layers.Dropout(rate=self.dropout_rate),
             layers.Dense(
                 self.out_dim,
@@ -77,7 +77,9 @@ class MlpBlock(layers.Layer):
         ])
 
     def call(self, inputs):
-        out = self.layers(inputs)
+        out = self.dense1(inputs)
+        out = self.gelu(out)
+        out = self.layers(out)
         return out
 
 
@@ -105,15 +107,17 @@ class TransformerBlock(layers.Layer):
 
         # self attention
         self.SelfAttention = SelfAttention(embed_size=self.embed_size, heads=self.num_heads, mask=self.mask)
-        self.feed_forward = keras.Sequential([
-            layers.LayerNormalization(axis=-1),
-            layers.Dropout(rate=self.attention_dropout_rate),
-            layers.Dense(self.embed_size*4),
-            layers.ReLU(),
-            layers.Dense(self.embed_size),
-            layers.LayerNormalization(axis=-1),
-            layers.Dropout(rate=self.attention_dropout_rate)
-        ])
+        # self.feed_forward = keras.Sequential([
+        #     layers.LayerNormalization(axis=-1),
+        #     layers.Dropout(rate=self.attention_dropout_rate),
+        #     layers.Dense(self.embed_size*4),
+        #     layers.ReLU(),
+        #     layers.Dense(self.embed_size),
+        #     layers.LayerNormalization(axis=-1),
+        #     layers.Dropout(rate=self.attention_dropout_rate)
+        # ])
+        self.dropout = layers.Dropout(rate=self.dropout_rate)
+
         # mlp
         self.norm = layers.LayerNormalization(axis=-1)
         self.Mlpblock = MlpBlock(
@@ -124,10 +128,11 @@ class TransformerBlock(layers.Layer):
 
     def call(self, inputs):
         # attention
-        query = inputs
         attention = self.SelfAttention(inputs)
-        attention = tf.math.add(attention, query)
-        out1 = self.feed_forward(attention)
+        attention = self.dropout(attention)
+        out1 = tf.math.add(attention, inputs)
+        # out1 = self.feed_forward(attention)
+
         # mlp
         out2 = self.norm(out1)
         out2 = self.Mlpblock(out2)
