@@ -78,7 +78,7 @@ if __name__ == '__main__':
                 BAcc = acc
                 print(f'saved path: {config.SAVE_PATH}')
             print(f'[epoch: %4d/ ' % i + 'EPOCHS:%4d]\t' % config.TOTAL_EPOCHS +
-                  + '[acc:%.4f' % acc + ', BAcc:%.4f]' % BAcc)
+                  '[acc:%.4f' % acc + ', BAcc:%.4f]' % BAcc)
 
 # import os
 #
