@@ -133,8 +133,9 @@ def test():
         hidden_size=config.HIDDEN_SIZE,
         representation_size=None,
         classifier='token').model()
-    out = model(img)
-    print(out.shape)
+    print(len(model.layers))
+    # out = model(img)
+    # print(out.shape)
 
 
 if __name__ == '__main__':
