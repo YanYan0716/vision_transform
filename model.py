@@ -134,6 +134,7 @@ def test():
         representation_size=None,
         classifier='token').model()
     print(len(model.layers))
+    model.summary()
     # out = model(img)
     # print(out.shape)
 
