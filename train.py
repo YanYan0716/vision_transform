@@ -68,7 +68,7 @@ if __name__ == '__main__':
                 AvgLoss = AvgLoss / float(config.LOG_LOSS)
                 print(f'[epoch: %4d/ ' % i + 'EPOCHS: %4d]\t' % config.TOTAL_EPOCHS +
                       '[step: %6d/ ' % step + 'STEPS: %6d]\t' % config.TOTAL_STEPS +
-                      '[loss:%.4f' % AvgLoss)
+                      '[loss:%.4f]' % AvgLoss + ' [learning rate: %.6f]' % lr)
                 AvgLoss = 0
 
         if i % config.LOG_EPOCH == 0:
