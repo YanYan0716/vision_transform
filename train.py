@@ -48,7 +48,7 @@ if __name__ == '__main__':
     )
 
     # training ...
-    print('training ... ')
+    print('training ')
     step = 0
     BAcc = 0
     for i in range(config.TOTAL_EPOCHS):
