@@ -106,6 +106,7 @@ class VisionTransformer(keras.Model):
         x = self.embedding(inputs)
         n, h, w, c = tf.shape(x)
         x = tf.reshape(x, [n, -1, c])
+        # class token
         cls = tf.zeros((1, 1, c))
         cls = tf.tile(cls, [n, 1, 1])
         x = tf.concat([cls, x], axis=1)
