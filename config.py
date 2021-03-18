@@ -37,7 +37,7 @@ START_EPOCH = 20
 # test
 TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
 # TEST_PATH = '/content/cifar/test.csv'  # google
-LOAD_PATH = '../input/weights/weights/M'
+LOAD_PATH = '../input/weights_m/weights/M'
 
 # evaluate
 LOG_EPOCH = 2
