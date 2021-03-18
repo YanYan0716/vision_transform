@@ -54,7 +54,7 @@ if __name__ == '__main__':
     print('training ')
     step = 31261
     BAcc = 0
-    for i in range(config.START_EPOCH - config.TOTAL_EPOCHS):
+    for i in range(config.TOTAL_EPOCHS - config.START_EPOCH):
         AvgLoss = 0
         for batch_idx, (img, label) in enumerate(ds_train):
             step += 1
