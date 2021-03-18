@@ -30,6 +30,9 @@ DECAY_TYPE = 'cosine'  # 'linear'
 GRAD_NORM_CLIP = 1.
 TOTAL_EPOCHS = 100
 TOTAL_STEPS = TOTAL_EPOCHS*int((50000/BATCH_SIZE)-1)
+CONTINUE = True
+START_EPOCH = 20
+
 
 # test
 TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle

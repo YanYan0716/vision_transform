@@ -36,6 +36,9 @@ if __name__ == '__main__':
         representation_size=None,
         classifier='token').model()
 
+    if config.CONTINUE:
+        vision_transformer.load_weights(config.LOAD_PATH)
+        print('continue training ...')
     # loss function
     loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 
@@ -49,9 +52,9 @@ if __name__ == '__main__':
 
     # training ...
     print('training ')
-    step = 0
+    step = 31261
     BAcc = 0
-    for i in range(config.TOTAL_EPOCHS):
+    for i in range(config.START_EPOCH - config.TOTAL_EPOCHS):
         AvgLoss = 0
         for batch_idx, (img, label) in enumerate(ds_train):
             step += 1
