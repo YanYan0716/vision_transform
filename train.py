@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     # training ...
     print('training ')
-    step = 31261
+    step = 0
     BAcc = 0
     for i in range(config.TOTAL_EPOCHS - config.START_EPOCH):
         AvgLoss = 0
