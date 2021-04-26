@@ -21,15 +21,15 @@ if __name__ == '__main__':
     ds_train = tf.data.Dataset.from_tensor_slices((file_paths, labels))
     ds_train = ds_train \
         .map(label_image, num_parallel_calls=AUTOTUNE) \
-        .batch(config.BATCH_SIZE) \
         .shuffle(config.SHUFFLE_BUFFER) \
+        .batch(config.BATCH_SIZE) \
         .prefetch(AUTOTUNE)
 
     # build model
     vision_transformer = VisionTransformer(
         num_classes=config.NUM_CLASSES,
         num_layers=config.NUM_LAYERS,
-        train=False,
+        train=True,
         resnet=None,
         patches=config.SIZE,
         hidden_size=config.HIDDEN_SIZE,
