@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3809d9e0-6c83-473e-8986-80e201130f36" name="Default Changelist" comment="." />
+    <list default="true" id="3809d9e0-6c83-473e-8986-80e201130f36" name="Default Changelist" comment=".">
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../involution" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -60,6 +62,7 @@
       <workItem from="1619158186701" duration="765000" />
       <workItem from="1619344030210" duration="765000" />
       <workItem from="1619399368381" duration="825000" />
+      <workItem from="1619404647641" duration="501000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1616074123684</created>
@@ -180,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619400088571</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary=".">
+      <created>1619404761565</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1619404761565</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,10 +226,10 @@
     </state>
     <state x="270" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1616074360447" />
     <state x="338" y="90" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618985945960" />
-    <state x="451" y="185" key="Vcs.Push.Dialog.v2" timestamp="1619400090343">
+    <state x="451" y="185" key="Vcs.Push.Dialog.v2" timestamp="1619404763690">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1616074783816" />
-    <state x="451" y="185" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619400090343" />
+    <state x="451" y="185" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619404763690" />
   </component>
 </project>
