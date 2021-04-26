@@ -4,13 +4,13 @@ DTYPE = tf.float32
 # dataset
 RESIZE = 64  # 512
 CROP = 64  # 384
-# TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
-TRAIN_PATH = '../cifar/train.csv'  # google
+TRAIN_PATH = '../input/cifar10/cifar/train.csv'  # kaggle
+# TRAIN_PATH = '../cifar/train.csv'  # google
 BATCH_SIZE = 32  # 512
 SHUFFLE_BUFFER = 50000
 
 # model
-SIZE = (4, 4)  # (16, 16)
+SIZE = (16, 16)  # (16, 16)
 HIDDEN_SIZE = 768
 MLP_DIM = 1024  # 3072
 NUM_HEADS = 12
@@ -34,9 +34,9 @@ START_EPOCH = 40
 
 
 # test
-# TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
-TEST_PATH = '../cifar/test.csv'  # google
-LOAD_PATH = './weights/M'
+TEST_PATH = '../input/cifar10/cifar/test.csv'  # kaggle
+# TEST_PATH = '../cifar/test.csv'  # google
+LOAD_PATH = '../input/weights/weights/M'
 
 # evaluate
 LOG_EPOCH = 2
