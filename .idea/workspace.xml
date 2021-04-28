@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3809d9e0-6c83-473e-8986-80e201130f36" name="Default Changelist" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../involution" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -66,7 +65,8 @@
       <workItem from="1619404647641" duration="1273000" />
       <workItem from="1619413726111" duration="1356000" />
       <workItem from="1619491377704" duration="140000" />
-      <workItem from="1619573123583" duration="697000" />
+      <workItem from="1619573123583" duration="1450000" />
+      <workItem from="1619578679801" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1616074123684</created>
@@ -215,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619414658433</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary=".">
+      <created>1619573931245</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1619573931245</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,19 +249,19 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="409" y="25" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1616074634064" />
-    <state x="946" y="292" key="FileChooserDialogImpl" timestamp="1619491516056">
+    <state x="946" y="292" key="FileChooserDialogImpl" timestamp="1619578693219">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="946" y="292" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619491516056" />
+    <state x="946" y="292" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619578693219" />
     <state x="338" y="90" key="SettingsEditor" timestamp="1618985945960">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="270" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1616074360447" />
     <state x="338" y="90" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618985945960" />
-    <state x="451" y="185" key="Vcs.Push.Dialog.v2" timestamp="1619414659733">
+    <state x="451" y="185" key="Vcs.Push.Dialog.v2" timestamp="1619573933523">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1616074783816" />
-    <state x="451" y="185" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619414659733" />
+    <state x="451" y="185" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619573933523" />
   </component>
 </project>
