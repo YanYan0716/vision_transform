@@ -40,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="F:/PROJECT/Invo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Group-Supervised" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SvnConfiguration">
@@ -70,6 +70,7 @@
       <workItem from="1619600729974" duration="827000" />
       <workItem from="1619658728660" duration="55000" />
       <workItem from="1619660219730" duration="846000" />
+      <workItem from="1619749335737" duration="549000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1616074123684</created>
@@ -246,7 +247,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619660322536</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary=".">
+      <created>1619749351656</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1619749351656</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,19 +281,19 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="409" y="25" key="CommitChangelistDialog2/0.0.1536.864@0.0.1536.864" timestamp="1616074634064" />
-    <state x="946" y="292" key="FileChooserDialogImpl" timestamp="1619661810444">
+    <state x="946" y="292" key="FileChooserDialogImpl" timestamp="1619749882924">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="946" y="292" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619661810444" />
+    <state x="946" y="292" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619749882924" />
     <state x="338" y="90" key="SettingsEditor" timestamp="1618985945960">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="270" y="75" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1616074360447" />
     <state x="338" y="90" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618985945960" />
-    <state x="451" y="185" key="Vcs.Push.Dialog.v2" timestamp="1619660324509">
+    <state x="451" y="185" key="Vcs.Push.Dialog.v2" timestamp="1619749353263">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="361" y="154" key="Vcs.Push.Dialog.v2/0.0.1536.864@0.0.1536.864" timestamp="1616074783816" />
-    <state x="451" y="185" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619660324509" />
+    <state x="451" y="185" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1619749353263" />
   </component>
 </project>
